@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "骨架：双阶段调用链（替换为合同语义）",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "column_fit": "spread",
+    "legend": { "mode": "hidden" },
+    "viewBox": [1080, 580]
+  },
+  "participants": [
+    { "id": "client", "type": "external", "label": "调用方", "sublabel": "CLI / 上游服务" },
+    { "id": "entry", "type": "backend", "label": "入口", "sublabel": "入口脚本 / 路由" },
+    { "id": "core", "type": "backend", "label": "核心服务", "sublabel": "主要处理" },
+    { "id": "store", "type": "database", "label": "存储", "sublabel": "持久化 / 产物" }
+  ],
+  "segments": [
+    { "from": 172, "to": 300, "label": "阶段 1（替换）" },
+    { "from": 306, "to": 470, "label": "阶段 2（替换）" }
+  ],
+  "messages": [
+    { "id": "m-1", "from": "client", "to": "entry", "y": 182, "label": "请求 1（含命令 / 参数）", "variant": "emphasis" },
+    { "id": "m-2", "from": "entry", "to": "core", "y": 210, "label": "调用 2" },
+    { "id": "m-3", "from": "entry", "to": "store", "y": 238, "label": "读写 3" },
+    { "id": "m-4", "from": "core", "to": "store", "y": 266, "label": "落盘 4", "variant": "dashed" },
+    { "id": "m-5", "from": "client", "to": "entry", "y": 316, "label": "请求 5", "variant": "emphasis" },
+    { "id": "m-6", "from": "entry", "to": "core", "y": 344, "label": "调用 6" },
+    { "id": "m-7", "from": "entry", "to": "core", "y": 372, "label": "调用 7" },
+    { "id": "m-8", "from": "core", "to": "store", "y": 400, "label": "落盘 8", "variant": "dashed" },
+    { "id": "m-9", "from": "entry", "to": "client", "y": 428, "label": "响应 9" }
+  ],
+  "activations": [
+    { "participant": "entry", "from": 182, "to": 434 },
+    { "participant": "core", "from": 208, "to": 216 },
+    { "participant": "store", "from": 236, "to": 244 },
+    { "participant": "core", "from": 342, "to": 378 }
+  ]
+}

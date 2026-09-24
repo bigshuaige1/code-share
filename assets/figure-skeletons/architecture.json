@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "骨架：中心-辐射组成（替换为合同语义）",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": { "mode": "hidden" },
+    "viewBox": [1080, 720]
+  },
+  "components": [
+    { "id": "hub", "type": "backend", "label": "核心机制或对象", "sublabel": "一句话原理", "pos": [430, 300], "size": [220, 96], "tag": "中心" },
+    { "id": "spokeA", "type": "messagebus", "label": "要素 A", "sublabel": "角色一句话", "pos": [100, 90], "size": [250, 76], "tag": "①" },
+    { "id": "spokeB", "type": "messagebus", "label": "要素 B", "sublabel": "角色一句话", "pos": [760, 90], "size": [250, 76], "tag": "②" },
+    { "id": "spokeC", "type": "messagebus", "label": "要素 C", "sublabel": "角色一句话", "pos": [760, 520], "size": [250, 76], "tag": "③" },
+    { "id": "spokeD", "type": "messagebus", "label": "要素 D", "sublabel": "角色一句话", "pos": [100, 520], "size": [250, 76], "tag": "④" },
+    { "id": "note", "type": "external", "label": "备注：适用边界", "sublabel": "何时不成立", "pos": [420, 610], "size": [240, 64] }
+  ],
+  "connections": [
+    { "id": "hub-to-a", "from": "hub", "to": "spokeA", "variant": "emphasis" },
+    { "id": "hub-to-b", "from": "hub", "to": "spokeB", "variant": "emphasis" },
+    { "id": "hub-to-c", "from": "hub", "to": "spokeC", "variant": "emphasis" },
+    { "id": "hub-to-d", "from": "hub", "to": "spokeD", "variant": "emphasis" },
+    { "id": "note-to-c", "from": "note", "to": "spokeC", "variant": "dashed" },
+    { "id": "note-to-d", "from": "note", "to": "spokeD", "variant": "dashed" }
+  ]
+}

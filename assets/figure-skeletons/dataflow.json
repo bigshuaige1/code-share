@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "骨架：三段数据流（替换为合同语义）",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "legend": { "mode": "hidden" },
+    "viewBox": [1080, 560]
+  },
+  "stages": [
+    { "label": "上游" },
+    { "label": "处理" },
+    { "label": "下游" }
+  ],
+  "nodes": [
+    { "id": "srcA", "type": "database", "label": "来源 A", "sublabel": "形态 / 精度", "stage": 0, "row": 0, "width": 150 },
+    { "id": "srcB", "type": "database", "label": "来源 B", "stage": 0, "row": 1, "width": 150 },
+    { "id": "proc", "type": "backend", "label": "主处理", "sublabel": "核心变换", "stage": 1, "row": 0, "width": 150 },
+    { "id": "side", "type": "backend", "label": "同级旁路处理", "stage": 1, "row": 1, "width": 150 },
+    { "id": "outA", "type": "backend", "label": "结果 A", "sublabel": "对消费者可见", "stage": 2, "row": 0, "width": 150 },
+    { "id": "outB", "type": "database", "label": "结果 B（落盘）", "stage": 2, "row": 1, "width": 170 }
+  ],
+  "flows": [
+    { "id": "f-a-proc", "from": "srcA", "to": "proc", "label": "读入" },
+    { "id": "f-b-proc", "from": "srcB", "to": "proc", "label": "读入", "labelDy": 12 },
+    { "id": "f-proc-side", "from": "proc", "to": "side", "label": "同阶段下行", "fromSide": "bottom", "toSide": "top", "labelAt": [540, 300] },
+    { "id": "f-proc-outa", "from": "proc", "to": "outA", "label": "产出", "variant": "emphasis" },
+    { "id": "f-side-outb", "from": "side", "to": "outB", "label": "写出", "variant": "dashed" }
+  ]
+}
